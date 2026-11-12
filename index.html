@@ -105,6 +105,10 @@
     .callout p { margin: .2rem 0; }
     .exercise { background: #f5f8ff; border: 1px solid #e2eafe; border-radius: 16px; padding: 1rem 1.2rem; margin: .9rem 0; }
     .exercise p { margin: .2rem 0 .65rem; }
+    .cloze { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin: .2rem .15rem; vertical-align: middle; }
+    .cloze input[type="text"] { width: 100px; padding: .35rem .5rem; }
+    .check-cloze { border: 0; border-radius: 8px; padding: .4rem .6rem; color: white; background: var(--blue); font-size: .85rem; font-weight: 750; }
+    .cloze .feedback { display: inline; min-height: 0; font-size: .9rem; }
     .answer-row { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
     input[type="text"] {
       width: min(100%, 280px);
@@ -177,7 +181,7 @@
       <div class="brand">GRAMMAIRE · A1–A2</div>
       <div>Les pronoms toniques</div>
     </header>
-    <div class="progress-track" role="progressbar" aria-label="Progression" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1">
+    <div class="progress-track" role="progressbar" aria-label="Progression" aria-valuemin="1"     aria-valuemax="12" aria-valuenow="1">
       <div class="progress"></div>
     </div>
     <main>
@@ -271,109 +275,88 @@
       </section>
 
       <section class="slide" aria-label="Diapositive 7">
-        <p class="eyebrow">06 · Exercice 1</p>
-        <h2>Choisissez le pronom</h2>
-        <p>Complétez chaque phrase. Écrivez le pronom tonique qui convient.</p>
-        <div class="exercise" data-answers="moi">
-          <p>1. Je viens avec ___.</p>
-          <div class="answer-row"><input type="text" aria-label="Réponse à la question 1" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        <p class="eyebrow">06 · Lecture à compléter</p>
+        <h2>Une journée dans notre classe</h2>
+        <p>Lisez le texte. Complétez chaque espace avec le pronom tonique qui représente la personne ou le groupe indiqué entre parenthèses. Puis, vérifiez chaque réponse.</p>
+        <div class="callout">
+          <p>Bonjour ! Je m’appelle Alice. <span class="cloze" data-answer="moi"><input type="text" aria-label="Pronom pour Alice" autocomplete="off"><button class="check-cloze">Vérifier</button><span class="feedback" aria-live="polite"></span></span>, je suis nouvelle dans la classe. Mon ami Tom arrive avec <span class="cloze" data-answer="moi"><input type="text" aria-label="Pronom pour Alice après avec" autocomplete="off"><button class="check-cloze">Vérifier</button><span class="feedback" aria-live="polite"></span></span> (Alice). Il me présente à la classe : « C’est <span class="cloze" data-answer="elle"><input type="text" aria-label="Pronom pour Alice après c’est" autocomplete="off"><button class="check-cloze">Vérifier</button><span class="feedback" aria-live="polite"></span></span> ! »</p>
+          <p>À huit heures, Tom pense à <span class="cloze" data-answer="lui"><input type="text" aria-label="Pronom pour le professeur" autocomplete="off"><button class="check-cloze">Vérifier</button><span class="feedback" aria-live="polite"></span></span> (le professeur) et il pense aussi à <span class="cloze" data-answer="elle"><input type="text" aria-label="Pronom pour Alice après à" autocomplete="off"><button class="check-cloze">Vérifier</button><span class="feedback" aria-live="polite"></span></span> (Alice). « Et <span class="cloze" data-answer="toi"><input type="text" aria-label="Pronom pour toi" autocomplete="off"><button class="check-cloze">Vérifier</button><span class="feedback" aria-live="polite"></span></span> (la personne à qui Tom parle), tu aimes le français ? » demande-t-il.</p>
+          <p>À midi, Max déjeune avec <span class="cloze" data-answer="elles"><input type="text" aria-label="Pronom pour Léa et Zoé" autocomplete="off"><button class="check-cloze">Vérifier</button><span class="feedback" aria-live="polite"></span></span> (Léa et Zoé). Paul et Hugo déjeunent chez <span class="cloze" data-answer="eux"><input type="text" aria-label="Pronom pour Paul et Hugo" autocomplete="off"><button class="check-cloze">Vérifier</button><span class="feedback" aria-live="polite"></span></span> (Paul et Hugo). Le professeur dit : « Cette activité est pour <span class="cloze" data-answer="vous"><input type="text" aria-label="Pronom pour les élèves" autocomplete="off"><button class="check-cloze">Vérifier</button><span class="feedback" aria-live="polite"></span></span, les élèves ! »</p>
         </div>
-        <div class="exercise" data-answers="eux">
-          <p>2. Paul et Marc, je déjeune chez ___.</p>
-          <div class="answer-row"><input type="text" aria-label="Réponse à la question 2" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
-        <div class="exercise" data-answers="elle">
-          <p>3. Léa pense à ___.</p>
-          <div class="answer-row"><input type="text" aria-label="Réponse à la question 3" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
-        <div class="exercise" data-answers="toi">
-          <p>4. Ce livre est pour ___.</p>
-          <div class="answer-row"><input type="text" aria-label="Réponse à la question 4" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
-        <div class="exercise" data-answers="nous">
-          <p>5. Le professeur parle de ___.</p>
-          <div class="answer-row"><input type="text" aria-label="Réponse à la question 5" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
+        <p class="small">Chaque indice entre parenthèses nomme précisément la personne ou le groupe.</p>
       </section>
 
       <section class="slide" aria-label="Diapositive 8">
-        <p class="eyebrow">07 · Exercice 2</p>
-        <h2>Insistez ou répondez</h2>
-        <div class="exercise" data-answers="lui">
-          <p>1. Qui est dans le jardin ? C’est ___ ! (Thomas)</p>
-          <div class="answer-row"><input type="text" aria-label="Réponse à la question 1" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
-        <div class="exercise" data-answers="elles">
-          <p>2. ___, elles aiment le cinéma. (Marie et Zoé)</p>
-          <div class="answer-row"><input type="text" aria-label="Réponse à la question 2" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
-        <div class="exercise" data-answers="moi">
-          <p>3. Qui parle français ? ___ ! (je)</p>
-          <div class="answer-row"><input type="text" aria-label="Réponse à la question 3" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
-        <div class="exercise" data-answers="eux">
-          <p>4. Sophie et moi, nous étudions. Karim et Hugo, ___, ils travaillent.</p>
-          <div class="answer-row"><input type="text" aria-label="Réponse à la question 4" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
-        <div class="exercise" data-answers="vous">
-          <p>5. ___, vous êtes dans le bon groupe. (vous)</p>
-          <div class="answer-row"><input type="text" aria-label="Réponse à la question 5" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
+        <p class="eyebrow">07 · Exercice 1</p>
+        <h2>Qui est-ce ? Insistez !</h2>
+        <p>Écrivez le pronom tonique. L’indice entre parenthèses donne le pronom sujet à reprendre.</p>
+        <div class="exercise" data-answers="lui"><p>1. (il) ___, il parle avec le professeur.</p><div class="answer-row"><input type="text" aria-label="Réponse 1" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="elle"><p>2. (elle) ___, elle habite à Paris.</p><div class="answer-row"><input type="text" aria-label="Réponse 2" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="nous"><p>3. (nous) ___, nous étudions le français.</p><div class="answer-row"><input type="text" aria-label="Réponse 3" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="vous"><p>4. (vous) ___, vous êtes les élèves de madame Martin.</p><div class="answer-row"><input type="text" aria-label="Réponse 4" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="eux"><p>5. (ils) ___, ils arrivent à huit heures.</p><div class="answer-row"><input type="text" aria-label="Réponse 5" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="elles"><p>6. (elles) ___, elles aiment la musique.</p><div class="answer-row"><input type="text" aria-label="Réponse 6" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="moi"><p>7. (je) ___, je préfère le thé.</p><div class="answer-row"><input type="text" aria-label="Réponse 7" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="toi"><p>8. (tu) ___, tu préfères le café.</p><div class="answer-row"><input type="text" aria-label="Réponse 8" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
       </section>
 
       <section class="slide" aria-label="Diapositive 9">
-        <p class="eyebrow">08 · Exercice 3</p>
-        <h2>Choisissez la bonne forme</h2>
-        <p>Cliquez sur un pronom pour compléter la phrase.</p>
-        <div class="exercise" data-answer="avec eux">
-          <p>1. Mes cousins sont ici. Je joue ___ au volley.</p>
-          <div class="choices"><button class="choice">avec lui</button><button class="choice">avec eux</button><button class="choice">avec elles</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
-        <div class="exercise" data-answer="chez elle">
-          <p>2. Nadia est à la maison. Nous allons ___.</p>
-          <div class="choices"><button class="choice">chez elle</button><button class="choice">chez eux</button><button class="choice">chez vous</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
-        <div class="exercise" data-answer="sans moi">
-          <p>3. Je reste à la maison. Vous partez ___.</p>
-          <div class="choices"><button class="choice">sans toi</button><button class="choice">sans moi</button><button class="choice">sans eux</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
-        <div class="exercise" data-answer="pour nous">
-          <p>4. Cette table est ___ : nous sommes six.</p>
-          <div class="choices"><button class="choice">pour nous</button><button class="choice">pour vous</button><button class="choice">pour elles</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
-        <div class="exercise" data-answer="à toi">
-          <p>5. Cette chaise est libre. Elle est ___ ?</p>
-          <div class="choices"><button class="choice">à lui</button><button class="choice">à toi</button><button class="choice">à elles</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
+        <p class="eyebrow">08 · Exercice 2</p>
+        <h2>Les prépositions en contexte</h2>
+        <p>Cliquez sur la forme correcte. Le nom ou le pronom sujet entre parenthèses indique exactement la personne.</p>
+        <div class="exercise" data-answer="avec lui"><p>1. Je joue au tennis avec ___ (mon frère).</p><div class="choices"><button class="choice">avec elle</button><button class="choice">avec lui</button><button class="choice">avec eux</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answer="chez elle"><p>2. Nous prenons le goûter chez ___ (Nina).</p><div class="choices"><button class="choice">chez lui</button><button class="choice">chez elle</button><button class="choice">chez eux</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answer="à eux"><p>3. Cette voiture, elle est à ___ (mes parents).</p><div class="choices"><button class="choice">à elle</button><button class="choice">à eux</button><button class="choice">à nous</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answer="pour toi"><p>4. Ce message est pour ___ (la personne à qui je parle).</p><div class="choices"><button class="choice">pour moi</button><button class="choice">pour toi</button><button class="choice">pour lui</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answer="sans nous"><p>5. Vous partez sans ___ (moi et mes amis).</p><div class="choices"><button class="choice">sans vous</button><button class="choice">sans nous</button><button class="choice">sans eux</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answer="de lui"><p>6. Tu parles souvent de ___ (le professeur).</p><div class="choices"><button class="choice">de lui</button><button class="choice">d’elle</button><button class="choice">d’eux</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answer="entre elles"><p>7. Les deux sœurs discutent entre ___ (les deux sœurs).</p><div class="choices"><button class="choice">entre eux</button><button class="choice">entre elles</button><button class="choice">entre vous</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answer="près de moi"><p>8. Le sac est près de ___ (je).</p><div class="choices"><button class="choice">près de toi</button><button class="choice">près de moi</button><button class="choice">près d’elle</button></div><div class="feedback" aria-live="polite"></div></div>
       </section>
 
       <section class="slide" aria-label="Diapositive 10">
-        <p class="eyebrow">09 · Exercice 4 et bilan</p>
-        <h2>La négation et le bilan</h2>
-        <div class="exercise" data-answers="elle">
-          <p>1. Il ne dîne pas chez ___ ce soir. (Lucie)</p>
-          <div class="answer-row"><input type="text" aria-label="Réponse à la question 1" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
-        <div class="exercise" data-answers="eux">
-          <p>2. Nous ne parlons pas de ___ aujourd’hui. (les garçons)</p>
-          <div class="answer-row"><input type="text" aria-label="Réponse à la question 2" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
-        <div class="exercise" data-answers="moi">
-          <p>3. Qui ne prend pas de thé ? Pas ___ ! (je)</p>
-          <div class="answer-row"><input type="text" aria-label="Réponse à la question 3" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
-        </div>
+        <p class="eyebrow">09 · Exercice 3</p>
+        <h2>Complétez avec « ne… pas »</h2>
+        <p>Écrivez seulement le pronom tonique. Le groupe entre parenthèses est la réponse précise.</p>
+        <div class="exercise" data-answers="elle"><p>1. Je ne déjeune pas avec ___ (Sophie).</p><div class="answer-row"><input type="text" aria-label="Réponse 1" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="eux"><p>2. Elle ne parle pas de ___ (ses frères).</p><div class="answer-row"><input type="text" aria-label="Réponse 2" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="moi"><p>3. Tu ne viens pas chez ___ (je).</p><div class="answer-row"><input type="text" aria-label="Réponse 3" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="vous"><p>4. Nous ne pensons pas à ___ (les personnes à qui nous parlons).</p><div class="answer-row"><input type="text" aria-label="Réponse 4" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="lui"><p>5. Elles ne sortent pas sans ___ (Paul).</p><div class="answer-row"><input type="text" aria-label="Réponse 5" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="nous"><p>6. Ce cadeau n’est pas pour ___ (toi et moi).</p><div class="answer-row"><input type="text" aria-label="Réponse 6" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="toi"><p>7. Je ne parle pas de ___ (la personne à qui je parle).</p><div class="answer-row"><input type="text" aria-label="Réponse 7" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+      </section>
+
+      <section class="slide" aria-label="Diapositive 11">
+        <p class="eyebrow">10 · Exercice 4</p>
+        <h2>« C’est… », « et… » ou réponse courte</h2>
+        <p>Complétez avec le pronom qui correspond à l’indice entre parenthèses.</p>
+        <div class="exercise" data-answers="lui"><p>1. Qui est le nouveau professeur ? C’est ___ (M. Dupont).</p><div class="answer-row"><input type="text" aria-label="Réponse 1" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="elles"><p>2. ___, elles chantent dans la chorale. (Marie et Léa)</p><div class="answer-row"><input type="text" aria-label="Réponse 2" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="moi"><p>3. Qui aime les crêpes ? ___ ! (je)</p><div class="answer-row"><input type="text" aria-label="Réponse 3" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="moi"><p>4. Toi et ___, nous sommes dans la même équipe. (je)</p><div class="answer-row"><input type="text" aria-label="Réponse 4" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="eux"><p>5. Les garçons, ___, ils jouent au football. (les garçons)</p><div class="answer-row"><input type="text" aria-label="Réponse 5" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="nous"><p>6. Nous préparons le repas : c’est ___ ! (toi et moi)</p><div class="answer-row"><input type="text" aria-label="Réponse 6" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+        <div class="exercise" data-answers="elle"><p>7. Qui arrive à midi ? C’est ___ (ma sœur).</p><div class="answer-row"><input type="text" aria-label="Réponse 7" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div></div>
+      </section>
+
+      <section class="slide" aria-label="Diapositive 12">
+        <p class="eyebrow">11 · Bilan</p>
+        <h2>Je retiens !</h2>
         <div class="callout">
-          <p><strong>Je retiens :</strong> moi, toi, lui, elle, soi, nous, vous, eux, elles.</p>
-          <p>Je les emploie pour insister, après « c’est », dans une réponse courte et après une préposition : avec, chez, à, pour, sans, de…</p>
-          <p>Au présent, la négation encadre le verbe : « Je ne sors pas avec eux. »</p>
+          <p><strong>Les formes :</strong> moi, toi, lui, elle, soi, nous, vous, eux, elles.</p>
+          <p><strong>Les emplois :</strong> pour insister, après « c’est », dans une réponse courte et après une préposition.</p>
+          <p><strong>Les prépositions :</strong> à, avec, chez, pour, sans, de, entre, près de…</p>
+          <p><strong>La négation au présent :</strong> Je ne sors pas avec eux. Elle ne pense pas à lui.</p>
         </div>
         <details class="answer-key">
-          <summary>Voir toutes les réponses</summary>
+          <summary>Voir les réponses de tous les exercices</summary>
           <ol>
-            <li>Exercice 1 : moi ; eux ; elle ; toi ; nous.</li>
-            <li>Exercice 2 : lui ; elles ; moi ; eux ; vous.</li>
-            <li>Exercice 3 : avec eux ; chez elle ; sans moi ; pour nous ; à toi.</li>
-            <li>Exercice 4 : elle ; eux ; moi.</li>
+            <li>Lecture : moi ; moi ; elle ; lui ; elle ; toi ; elles ; eux ; vous.</li>
+            <li>Exercice 1 : lui ; elle ; nous ; vous ; eux ; elles ; moi ; toi.</li>
+            <li>Exercice 2 : avec lui ; chez elle ; à eux ; pour toi ; sans nous ; de lui ; entre elles ; près de moi.</li>
+            <li>Exercice 3 : elle ; eux ; moi ; vous ; lui ; nous ; toi.</li>
+            <li>Exercice 4 : lui ; elles ; moi ; moi ; eux ; nous ; elle.</li>
           </ol>
         </details>
       </section>
@@ -412,6 +395,20 @@
       document.addEventListener("keydown", event => {
         if (event.key === "ArrowRight") showSlide(current + 1);
         if (event.key === "ArrowLeft") showSlide(current - 1);
+      });
+
+      document.querySelectorAll(".cloze").forEach(cloze => {
+        const input = cloze.querySelector("input");
+        const button = cloze.querySelector(".check-cloze");
+        const feedback = cloze.querySelector(".feedback");
+        button.addEventListener("click", () => {
+          const correct = input.value.trim().toLocaleLowerCase("fr") === cloze.dataset.answer;
+          feedback.className = `feedback ${correct ? "good" : "bad"}`;
+          feedback.textContent = correct ? "Correct !" : input.value.trim() ? `Réponse : ${cloze.dataset.answer}.` : "Écrivez une réponse.";
+        });
+        input.addEventListener("keydown", event => {
+          if (event.key === "Enter") button.click();
+        });
       });
 
       document.querySelectorAll(".exercise[data-answers]").forEach(exercise => {
