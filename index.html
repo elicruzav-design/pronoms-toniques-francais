@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172554">
+  <title>Les pronoms toniques — cours et exercices</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172554;
+      --muted: #53627d;
+      --paper: #fffdf8;
+      --blue: #2563eb;
+      --pale: #eaf1ff;
+      --coral: #f97360;
+      --green: #18794e;
+      --red: #b42318;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #dce7f8;
+      color: var(--ink);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 1.25rem;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .deck {
+      width: min(100%, 1100px);
+      min-height: min(720px, calc(100vh - 2.5rem));
+      background: var(--paper);
+      border-radius: 26px;
+      box-shadow: 0 24px 70px #17255426;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #e6eaf2;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .brand { font-weight: 800; color: var(--ink); letter-spacing: .02em; }
+    .progress-track { height: 5px; background: #e6eaf2; }
+    .progress { height: 100%; width: 10%; background: var(--coral); transition: width .25s ease; }
+    main { flex: 1; display: grid; }
+    .slide {
+      display: none;
+      width: 100%;
+      align-self: stretch;
+      padding: clamp(1.5rem, 5vw, 4.5rem);
+      animation: appear .24s ease-out;
+    }
+    .slide.active { display: block; }
+    @keyframes appear { from { opacity: .35; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: var(--blue);
+      font-size: .78rem;
+      font-weight: 850;
+      margin: 0 0 1rem;
+    }
+    h1, h2 { margin: 0 0 1rem; line-height: 1.08; letter-spacing: -.035em; }
+    h1 { font-size: clamp(2.5rem, 7vw, 5rem); max-width: 800px; }
+    h2 { font-size: clamp(1.9rem, 4vw, 3.2rem); }
+    h3 { margin: 1.4rem 0 .45rem; font-size: 1.12rem; }
+    p, li { font-size: clamp(1rem, 1.6vw, 1.2rem); line-height: 1.65; }
+    p { max-width: 760px; }
+    .lead { color: var(--muted); font-size: clamp(1.15rem, 2vw, 1.45rem); max-width: 760px; }
+    .tag {
+      display: inline-block;
+      background: #fff0e8;
+      color: #983d26;
+      padding: .4rem .75rem;
+      border-radius: 999px;
+      font-weight: 750;
+      margin: .25rem .25rem .25rem 0;
+    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: .85rem; margin: 1.4rem 0; }
+    .card {
+      background: white;
+      border: 1px solid #e4e9f2;
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
+      box-shadow: 0 5px 16px #1725540a;
+    }
+    .card strong { color: var(--blue); }
+    .table-wrap { overflow-x: auto; margin: 1.4rem 0; }
+    table { border-collapse: collapse; width: 100%; min-width: 500px; background: white; border-radius: 14px; overflow: hidden; }
+    th, td { padding: .8rem 1rem; text-align: left; border-bottom: 1px solid #e6eaf2; font-size: 1.05rem; }
+    th { background: var(--pale); }
+    tr:last-child td { border-bottom: 0; }
+    .callout { border-left: 5px solid var(--coral); background: #fff4ef; border-radius: 0 14px 14px 0; padding: 1rem 1.25rem; margin: 1.2rem 0; }
+    .callout p { margin: .2rem 0; }
+    .exercise { background: #f5f8ff; border: 1px solid #e2eafe; border-radius: 16px; padding: 1rem 1.2rem; margin: .9rem 0; }
+    .exercise p { margin: .2rem 0 .65rem; }
+    .answer-row { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+    input[type="text"] {
+      width: min(100%, 280px);
+      padding: .65rem .8rem;
+      border: 1px solid #b9c5d9;
+      border-radius: 9px;
+      background: white;
+      color: var(--ink);
+    }
+    input:focus { outline: 3px solid #93b4ff; border-color: var(--blue); }
+    .check, .nav-btn {
+      border: 0;
+      border-radius: 10px;
+      padding: .68rem 1rem;
+      font-weight: 750;
+    }
+    .check { color: white; background: var(--blue); }
+    .check:hover, .nav-btn.next:hover { background: #1d4ed8; }
+    .feedback { min-height: 1.5em; margin-top: .5rem; font-weight: 750; font-size: .96rem; }
+    .feedback.good { color: var(--green); }
+    .feedback.bad { color: var(--red); }
+    .choices { display: flex; flex-wrap: wrap; gap: .55rem; margin: .6rem 0; }
+    .choice {
+      border: 1px solid #9db4e3;
+      color: var(--ink);
+      background: white;
+      padding: .58rem .85rem;
+      border-radius: 999px;
+    }
+    .choice:hover { background: var(--pale); }
+    .choice[aria-pressed="true"] { color: white; background: var(--blue); border-color: var(--blue); }
+    .answer-key { margin-top: 1rem; }
+    .answer-key summary { color: var(--blue); font-weight: 800; cursor: pointer; }
+    .answer-key li { font-size: 1rem; }
+    .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .75rem;
+      padding: 1rem 1.5rem;
+      border-top: 1px solid #e6eaf2;
+    }
+    .nav-btn { background: #edf1f8; color: var(--ink); }
+    .nav-btn.next { color: white; background: var(--blue); }
+    .nav-btn:disabled { opacity: .42; cursor: not-allowed; }
+    .counter { color: var(--muted); font-size: .9rem; font-variant-numeric: tabular-nums; }
+    .hero-mark { color: var(--coral); }
+    .small { color: var(--muted); font-size: .95rem; }
+    @media (max-width: 600px) {
+      body { padding: 0; }
+      .deck { min-height: 100vh; border-radius: 0; }
+      .topbar, .bottom { padding: .85rem 1rem; }
+      .slide { padding: 1.5rem 1.15rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+    @media print {
+      body { display: block; padding: 0; background: white; }
+      .deck { display: block; width: 100%; min-height: 0; box-shadow: none; overflow: visible; }
+      .topbar, .progress-track, .bottom, .check, .choices { display: none !important; }
+      .slide, .slide.active { display: block !important; page-break-after: always; padding: 1.5cm; }
+      .exercise, .card, table { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <header class="topbar">
+      <div class="brand">GRAMMAIRE · A1–A2</div>
+      <div>Les pronoms toniques</div>
+    </header>
+    <div class="progress-track" role="progressbar" aria-label="Progression" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1">
+      <div class="progress"></div>
+    </div>
+    <main>
+      <section class="slide active" aria-label="Diapositive 1">
+        <p class="eyebrow">Observer · comprendre · pratiquer</p>
+        <h1>Les pronoms <span class="hero-mark">toniques</span></h1>
+        <p class="lead">Moi, toi, lui… Ces pronoms mettent une personne en valeur et s’emploient souvent après une préposition.</p>
+        <div class="grid">
+          <div class="card"><strong>Objectif</strong><br>Choisir le bon pronom tonique.</div>
+          <div class="card"><strong>À retenir</strong><br>Ils désignent des personnes ou des groupes.</div>
+          <div class="card"><strong>Au programme</strong><br>Formes, emplois, prépositions et exercices.</div>
+        </div>
+        <p class="small">Utilisez les flèches du clavier ou les boutons pour avancer.</p>
+      </section>
+
+      <section class="slide" aria-label="Diapositive 2">
+        <p class="eyebrow">01 · Les formes</p>
+        <h2>La liste à connaître</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Pronom sujet</th><th>Pronom tonique</th><th>Exemple</th></tr></thead>
+            <tbody>
+              <tr><td>je</td><td><strong>moi</strong></td><td>Moi, je parle français.</td></tr>
+              <tr><td>tu</td><td><strong>toi</strong></td><td>Et toi, tu aimes lire ?</td></tr>
+              <tr><td>il</td><td><strong>lui</strong></td><td>Lui, il habite à Lyon.</td></tr>
+              <tr><td>elle</td><td><strong>elle</strong></td><td>Elle, elle joue au tennis.</td></tr>
+              <tr><td>on</td><td><strong>soi</strong></td><td>On pense à soi.</td></tr>
+              <tr><td>nous</td><td><strong>nous</strong></td><td>Nous, nous sommes prêts.</td></tr>
+              <tr><td>vous</td><td><strong>vous</strong></td><td>Vous, vous êtes en classe.</td></tr>
+              <tr><td>ils</td><td><strong>eux</strong></td><td>Eux, ils arrivent à huit heures.</td></tr>
+              <tr><td>elles</td><td><strong>elles</strong></td><td>Elles, elles chantent très bien.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout"><p><strong>Attention :</strong> « soi » renvoie souvent à une personne générale avec « on ».</p></div>
+      </section>
+
+      <section class="slide" aria-label="Diapositive 3">
+        <p class="eyebrow">02 · Quand les utiliser ?</p>
+        <h2>Trois emplois essentiels</h2>
+        <div class="grid">
+          <div class="card"><h3>Pour insister ou opposer</h3><p><strong>Moi</strong>, je préfère le thé. <strong>Toi</strong>, tu préfères le café.</p></div>
+          <div class="card"><h3>Après « c’est »</h3><p>Qui parle ? C’est <strong>lui</strong>. C’est <strong>nous</strong> !</p></div>
+          <div class="card"><h3>Après « et », « ou », « mais »</h3><p>Paul et <strong>moi</strong>, nous sommes dans la même classe.</p></div>
+          <div class="card"><h3>Dans une réponse courte</h3><p>Qui aime la musique ? <strong>Moi</strong> !</p></div>
+        </div>
+        <div class="callout"><p><strong>Rappel :</strong> le pronom sujet accompagne le verbe : « Moi, <em>je</em> comprends. » Le pronom tonique, seul, ne remplace pas le sujet du verbe.</p></div>
+      </section>
+
+      <section class="slide" aria-label="Diapositive 4">
+        <p class="eyebrow">03 · Les prépositions</p>
+        <h2>Après une préposition</h2>
+        <p>Après une préposition, le pronom tonique est la forme habituelle pour parler d’une personne.</p>
+        <div class="grid">
+          <div class="card"><span class="tag">à</span><p>Je pense <strong>à elle</strong>.<br>Il pense <strong>à eux</strong>.</p></div>
+          <div class="card"><span class="tag">avec</span><p>Tu viens <strong>avec moi</strong> ?<br>Elle travaille <strong>avec lui</strong>.</p></div>
+          <div class="card"><span class="tag">chez</span><p>Nous dînons <strong>chez eux</strong>.<br>Je vais <strong>chez elle</strong>.</p></div>
+          <div class="card"><span class="tag">pour</span><p>Ce cadeau est <strong>pour toi</strong>.<br>Il vote <strong>pour nous</strong>.</p></div>
+          <div class="card"><span class="tag">sans</span><p>Je sors <strong>sans lui</strong>.<br>Elles partent <strong>sans vous</strong>.</p></div>
+          <div class="card"><span class="tag">de</span><p>Il parle <strong>de moi</strong>.<br>Elle revient <strong>de chez eux</strong>.</p></div>
+        </div>
+        <p class="small">Autres exemples : « devant toi », « près de nous », « entre eux », « contre elle ».</p>
+      </section>
+
+      <section class="slide" aria-label="Diapositive 5">
+        <p class="eyebrow">04 · À + pronom</p>
+        <h2>La forme ne change pas</h2>
+        <p>Pour insister, avec <strong>à</strong>, le pronom tonique reste séparé : <strong>à moi, à toi, à lui, à elle, à nous, à vous, à eux, à elles</strong>.</p>
+        <div class="callout">
+          <p>Je pense <strong>à elle</strong>. · Il pense <strong>à eux</strong>. · Tu penses <strong>à moi</strong> ?</p>
+        </div>
+        <div class="grid">
+          <div class="card"><h3>Avec « penser à »</h3><p>Nous pensons à <strong>vous</strong>.</p></div>
+          <div class="card"><h3>Avec « s’intéresser à »</h3><p>Elle s’intéresse à <strong>lui</strong>.</p></div>
+          <div class="card"><h3>Avec « tenir à »</h3><p>Je tiens à <strong>eux</strong>.</p></div>
+        </div>
+        <p><strong>Ne confondez pas :</strong> « Je lui parle » (pronom complément) et « Je parle à lui » (pronom tonique, forme accentuée). Dans la conversation, « Je lui parle » est plus courant.</p>
+      </section>
+
+      <section class="slide" aria-label="Diapositive 6">
+        <p class="eyebrow">05 · La négation au présent</p>
+        <h2>Ne… pas + pronom tonique</h2>
+        <p>La négation encadre le verbe conjugué au présent. Le pronom tonique garde sa place après la préposition ou dans la réponse.</p>
+        <div class="grid">
+          <div class="card"><p>Je <strong>ne</strong> sors <strong>pas avec lui</strong>.</p></div>
+          <div class="card"><p>Elle <strong>ne</strong> pense <strong>pas à eux</strong>.</p></div>
+          <div class="card"><p>Ce cadeau <strong>n’est pas pour toi</strong>.</p></div>
+          <div class="card"><p>Qui aime le café ? <strong>Pas moi</strong> !</p></div>
+        </div>
+        <div class="callout"><p>Devant une voyelle, « ne » devient « n’ » : <strong>Il n’habite pas chez elle.</strong></p></div>
+      </section>
+
+      <section class="slide" aria-label="Diapositive 7">
+        <p class="eyebrow">06 · Exercice 1</p>
+        <h2>Choisissez le pronom</h2>
+        <p>Complétez chaque phrase. Écrivez le pronom tonique qui convient.</p>
+        <div class="exercise" data-answers="moi">
+          <p>1. Je viens avec ___.</p>
+          <div class="answer-row"><input type="text" aria-label="Réponse à la question 1" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answers="eux">
+          <p>2. Paul et Marc, je déjeune chez ___.</p>
+          <div class="answer-row"><input type="text" aria-label="Réponse à la question 2" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answers="elle">
+          <p>3. Léa pense à ___.</p>
+          <div class="answer-row"><input type="text" aria-label="Réponse à la question 3" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answers="toi">
+          <p>4. Ce livre est pour ___.</p>
+          <div class="answer-row"><input type="text" aria-label="Réponse à la question 4" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answers="nous">
+          <p>5. Le professeur parle de ___.</p>
+          <div class="answer-row"><input type="text" aria-label="Réponse à la question 5" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="slide" aria-label="Diapositive 8">
+        <p class="eyebrow">07 · Exercice 2</p>
+        <h2>Insistez ou répondez</h2>
+        <div class="exercise" data-answers="lui">
+          <p>1. Qui est dans le jardin ? C’est ___ ! (Thomas)</p>
+          <div class="answer-row"><input type="text" aria-label="Réponse à la question 1" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answers="elles">
+          <p>2. ___, elles aiment le cinéma. (Marie et Zoé)</p>
+          <div class="answer-row"><input type="text" aria-label="Réponse à la question 2" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answers="moi">
+          <p>3. Qui parle français ? ___ ! (je)</p>
+          <div class="answer-row"><input type="text" aria-label="Réponse à la question 3" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answers="eux">
+          <p>4. Sophie et moi, nous étudions. Karim et Hugo, ___, ils travaillent.</p>
+          <div class="answer-row"><input type="text" aria-label="Réponse à la question 4" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answers="vous">
+          <p>5. ___, vous êtes dans le bon groupe. (vous)</p>
+          <div class="answer-row"><input type="text" aria-label="Réponse à la question 5" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="slide" aria-label="Diapositive 9">
+        <p class="eyebrow">08 · Exercice 3</p>
+        <h2>Choisissez la bonne forme</h2>
+        <p>Cliquez sur un pronom pour compléter la phrase.</p>
+        <div class="exercise" data-answer="avec eux">
+          <p>1. Mes cousins sont ici. Je joue ___ au volley.</p>
+          <div class="choices"><button class="choice">avec lui</button><button class="choice">avec eux</button><button class="choice">avec elles</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answer="chez elle">
+          <p>2. Nadia est à la maison. Nous allons ___.</p>
+          <div class="choices"><button class="choice">chez elle</button><button class="choice">chez eux</button><button class="choice">chez vous</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answer="sans moi">
+          <p>3. Je reste à la maison. Vous partez ___.</p>
+          <div class="choices"><button class="choice">sans toi</button><button class="choice">sans moi</button><button class="choice">sans eux</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answer="pour nous">
+          <p>4. Cette table est ___ : nous sommes six.</p>
+          <div class="choices"><button class="choice">pour nous</button><button class="choice">pour vous</button><button class="choice">pour elles</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answer="à toi">
+          <p>5. Cette chaise est libre. Elle est ___ ?</p>
+          <div class="choices"><button class="choice">à lui</button><button class="choice">à toi</button><button class="choice">à elles</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="slide" aria-label="Diapositive 10">
+        <p class="eyebrow">09 · Exercice 4 et bilan</p>
+        <h2>La négation et le bilan</h2>
+        <div class="exercise" data-answers="elle">
+          <p>1. Il ne dîne pas chez ___ ce soir. (Lucie)</p>
+          <div class="answer-row"><input type="text" aria-label="Réponse à la question 1" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answers="eux">
+          <p>2. Nous ne parlons pas de ___ aujourd’hui. (les garçons)</p>
+          <div class="answer-row"><input type="text" aria-label="Réponse à la question 2" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="exercise" data-answers="moi">
+          <p>3. Qui ne prend pas de thé ? Pas ___ ! (je)</p>
+          <div class="answer-row"><input type="text" aria-label="Réponse à la question 3" autocomplete="off"><button class="check">Vérifier</button></div><div class="feedback" aria-live="polite"></div>
+        </div>
+        <div class="callout">
+          <p><strong>Je retiens :</strong> moi, toi, lui, elle, soi, nous, vous, eux, elles.</p>
+          <p>Je les emploie pour insister, après « c’est », dans une réponse courte et après une préposition : avec, chez, à, pour, sans, de…</p>
+          <p>Au présent, la négation encadre le verbe : « Je ne sors pas avec eux. »</p>
+        </div>
+        <details class="answer-key">
+          <summary>Voir toutes les réponses</summary>
+          <ol>
+            <li>Exercice 1 : moi ; eux ; elle ; toi ; nous.</li>
+            <li>Exercice 2 : lui ; elles ; moi ; eux ; vous.</li>
+            <li>Exercice 3 : avec eux ; chez elle ; sans moi ; pour nous ; à toi.</li>
+            <li>Exercice 4 : elle ; eux ; moi.</li>
+          </ol>
+        </details>
+      </section>
+    </main>
+    <footer class="bottom">
+      <button class="nav-btn" id="previous" aria-label="Diapositive précédente">← Précédent</button>
+      <span class="counter" aria-live="polite">1 / 10</span>
+      <button class="nav-btn next" id="next" aria-label="Diapositive suivante">Suivant →</button>
+    </footer>
+  </div>
+  <script>
+    (() => {
+      const slides = [...document.querySelectorAll(".slide")];
+      const previous = document.querySelector("#previous");
+      const next = document.querySelector("#next");
+      const counter = document.querySelector(".counter");
+      const progress = document.querySelector(".progress");
+      const progressTrack = document.querySelector(".progress-track");
+      let current = 0;
+
+      function showSlide(index) {
+        current = Math.max(0, Math.min(index, slides.length - 1));
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("active", i === current);
+          slide.setAttribute("aria-hidden", String(i !== current));
+        });
+        counter.textContent = `${current + 1} / ${slides.length}`;
+        previous.disabled = current === 0;
+        next.disabled = current === slides.length - 1;
+        progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+        progressTrack.setAttribute("aria-valuenow", String(current + 1));
+      }
+
+      previous.addEventListener("click", () => showSlide(current - 1));
+      next.addEventListener("click", () => showSlide(current + 1));
+      document.addEventListener("keydown", event => {
+        if (event.key === "ArrowRight") showSlide(current + 1);
+        if (event.key === "ArrowLeft") showSlide(current - 1);
+      });
+
+      document.querySelectorAll(".exercise[data-answers]").forEach(exercise => {
+        const input = exercise.querySelector("input");
+        const button = exercise.querySelector(".check");
+        const feedback = exercise.querySelector(".feedback");
+        const answers = exercise.dataset.answers.split("|");
+        button.addEventListener("click", () => {
+          const value = input.value.trim().toLocaleLowerCase("fr");
+          const correct = answers.some(answer => value === answer.toLocaleLowerCase("fr"));
+          feedback.className = `feedback ${correct ? "good" : "bad"}`;
+          feedback.textContent = correct ? "Bravo, c’est correct !" : value ? `Réponse attendue : ${answers.join(" ou ")}.` : "Écrivez une réponse.";
+        });
+        input.addEventListener("keydown", event => {
+          if (event.key === "Enter") button.click();
+        });
+      });
+
+      document.querySelectorAll(".exercise[data-answer]").forEach(exercise => {
+        const feedback = exercise.querySelector(".feedback");
+        exercise.querySelectorAll(".choice").forEach(choice => {
+          choice.addEventListener("click", () => {
+            exercise.querySelectorAll(".choice").forEach(button => button.setAttribute("aria-pressed", "false"));
+            choice.setAttribute("aria-pressed", "true");
+            const correct = choice.textContent.trim() === exercise.dataset.answer;
+            feedback.className = `feedback ${correct ? "good" : "bad"}`;
+            feedback.textContent = correct ? "Bravo, c’est correct !" : "Ce n’est pas la bonne réponse. Réessayez.";
+          });
+        });
+      });
+      showSlide(0);
+    })();
+  </script>
+</body>
+</html>
